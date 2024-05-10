@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit;
+}
+
+html {
+    /* 62.5% = 10px, since default browser's font size 16px  */
+    font-size: 62.5%;
+    /* 1 rem = 10 px / see units notes*/
+    /* use 5px for mobile */
+
+    @include respond(tab-land) { //width < 1200?
+        font-size: 56.25%; //1rem = 9px, 9/16 = 56.25%
+    }
+
+    @include respond(tab-port) { //width < 900?
+        font-size: 50%; //1 rem = 8px, 8/16 = 50%
+    }
+
+    // @include respond(phone) { //width < 600?
+    //     font-size: 30%; //1 rem = 4.8px 
+    // }
+
+    @include respond(big-desktop) {
+        font-size: 80%; //1rem = 12px, 12/16 = 75%
+    }
+}
+// No respond phone bcz also font-size = 50%
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+    // overflow: hidden; //i added it
+
+    @include respond(tab-port) {
+        font-size: 50%; 
+        padding: 0%;
+    }
+}
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
